@@ -28,7 +28,6 @@ function findEvenIndex(arr)
             return i;
     }
 
-    console.log(dict[arr.length - 2][0] + arr[arr.length - 2]);
     return dict[arr.length - 2][0] + arr[arr.length - 2] === 0
       ? (arr.length - 1) : -1;
 }
