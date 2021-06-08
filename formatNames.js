@@ -3,10 +3,8 @@ function list(names){
         return element.name;
     });
     if(namesArray.length > 1){
-        var lastName = namesArray[namesArray.length - 1];
-        namesArray.splice(namesArray.length - 1, 1);
-        var namesString = namesArray.join(', ');
-        return namesString + ' & ' + lastName;
+        var namesResult = namesArray.slice(0, namesArray.length - 1).join(', ');
+        return namesResult  + ' & ' + namesArray[namesArray.length - 1];
     }
     else if(namesArray.length === 1)
         return namesArray[0];
@@ -15,4 +13,13 @@ function list(names){
 }
 
 
-console.log(list([{name: 'Bart'}]));
+console.log(list([{name: 'Bart'}, {name: 'Lisa'}, {name: 'Maggie'}]));
+
+
+//clever solution seen that uses pop() and a ternary as well.
+
+// function list(names) {
+//     var xs = names.map(p => p.name)
+//     var x = xs.pop()
+//     return xs.length ? xs.join(", ") + " & " + x : x || ""
+//   }
