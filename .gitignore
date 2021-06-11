@@ -3,8 +3,8 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-/node_modules
-/coverage
+node_modules/
+coverage/
 
 # User-specific files
 *.rsuser
