@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "test": "jest --testEnvironment=node --verbose --forceExit --watchAll --maxWorkers=1 --coverage"
+  },
+  "devDependencies": {
+    "jest": "^27.0.4"
+  }
+}
