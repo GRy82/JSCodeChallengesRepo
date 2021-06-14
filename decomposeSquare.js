@@ -1,27 +1,52 @@
+var invalidRemainders = new Set([2, 3, 6, 7, 8, 11, 12, 15, 18, 19, 22, 23]);
+
 function decompose(n){
     let remainder = Math.pow(n, 2);
-    let digitsArray = [];
+    let digitsArray = []
     let testedDigit = n - 1;
 
-    while(remainder > 0){
-        if(digitCreatesValidSequence(remainder, testedDigit)){
-            digitsArray.unshift(testedDigit);
-            remainder -= Math.pow(testedDigit, 2);
-        }
-        
-        testedDigit = nextLowestValidDigit(remainder);
-    }
+    return buildArray(remainder, [], testedDigit);
 }
-
-
-function generateSolution(remainder, testArray, digit){
+//dynamically add invalidRemainders at some point if we figure out how to.
+                    //  144          []          10
+function buildArray(remainder, testArray, testedDigit){
     if(remainder === 0) return testArray;
 
-    testArray.unshift(digit);
-    remainder -= Math.pow(digit, 2);
-    digit = nextLowestValidDigit(remainder);
+    possibleRemainder = remainder - Math.pow(testedDigit, 2); // 44
+
+    //if the remainder that would be yielded is the precursor to an invalid solution you run the function with the next possible digit.
+    if (isDeadEnd(possibleRemainder, testedDigit))
+        return buildArray(remainder, testArray, nextLowestValidDigit(remainder, testedDigit));
+
+    testArray.unshift(testedDigit);
+    return  buildArray(possibleRemainder, testArray, nextLowestValidDigit(possibleRemainder, testedDigit));
 
 }
+                    //44       //10
+function isDeadEnd(remainder, testedDigit){
+    if(invalidRemainders.has(remainder))
+        return true;
+      
+    
+    let nextDigit = nextLowestValidDigit(remainder, testedDigit);
+    for(let i = nextDigit; i > 0; i--){
+        let tempRemainder = remainder;
+        if(invalidRemainders.has(remainder - i * i)) continue;
+        for(let j = i; j > 0; j--){
+            tempRemainder -= j * j;
+        }
+        if(tempRemainder > 0) 
+            continue;
+        else 
+            return false;
+    }
+
+    invalidRemainders.add(remainder);
+    return true;
+}
+
+console.log(isDeadEnd(9, 4));
+
 
 
 function validSequence(arr){   
@@ -49,7 +74,10 @@ function containsRepeats(arr){
 }
         
 
-function nextLowestValidDigit(remainingPortion){
+function nextLowestValidDigit(remainingPortion, currentTestedDigit){
+    if(remainingPortion - Math.pow(currentTestedDigit - 1, 2) >= 0)
+        return currentTestedDigit - 1;
+    
     return Math.floor(Math.pow(remainingPortion, .5));
 }
 
@@ -58,6 +86,8 @@ function nextLowestValidDigit(remainingPortion){
 
 exports.validSequence = validSequence;
 exports.nextLowest = nextLowestValidDigit;
+exports.buildArray = buildArray;
+exports.isDeadEnd = isDeadEnd;
 
 
 
