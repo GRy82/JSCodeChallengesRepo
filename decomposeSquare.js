@@ -1,3 +1,12 @@
+// Square into Squares. Protect trees!
+
+// Given a positive integral number n, return a strictly increasing sequence 
+// (list/array/string depending on the language) of numbers, so that the sum 
+// of the squares is equal to n².
+
+// If there are multiple solutions (and there will be), return as far as 
+// possible the result with the largest possible values:
+
 var invalidRemainders = new Set([2, 3, 6, 7, 8, 11, 12, 15, 18, 19, 22, 23]);
 
 function decompose(n){
@@ -53,7 +62,7 @@ function nextLowestValidDigit(remainingPortion, currentTestedDigit){
     return Math.floor(Math.pow(remainingPortion, .5));
 }
 
-console.log(decompose(168769));
+console.log(decompose(119775));
 
 exports.nextLowest = nextLowestValidDigit;
 exports.buildArray = buildArray;
