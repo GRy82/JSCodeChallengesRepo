@@ -1,4 +1,5 @@
 const arrayDiff = require('../arrayDifference');
+const {validSequence} = require('../decomposeSquare');
 
 describe('arrayDiff', () => {
     let arrayOne, arrayTwo;
@@ -22,5 +23,30 @@ describe('arrayDiff', () => {
         arrayOne = [];
         const diffArray = arrayDiff(arrayOne, arrayTwo);
         expect(diffArray).toEqual([]);
+    });
+});
+
+describe('decomposeSquare', () => {
+    let collection;
+    describe('valid sequences', () => {
+        it('should return false given a negative number in the collection.', () => {
+            collection = [1, 2, -4, 3, 7];
+            let validity = validSequence(collection);
+
+            expect(validity).toBeFalsy();
+        });
+        it('should return false given a 0 in the collection.', () => {
+            collection = [1, 2, 0, 3, 7];
+            let validity = validSequence(collection);
+
+            expect(validity).toBeFalsy();
+        });
+        it('should return false if it contains repeats.', () => {
+            collection = [1, 2, 2, 3, 7];
+            let validity = validSequence(collection);
+
+            expect(validity).toBeFalsy();
+        });
+
     });
 });
