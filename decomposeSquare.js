@@ -1,11 +1,10 @@
 var invalidRemainders = new Set([2, 3, 6, 7, 8, 11, 12, 15, 18, 19, 22, 23]);
 
 function decompose(n){
-    let remainder = Math.pow(n, 2);
-    let digitsArray = []
-    let testedDigit = n - 1;
-
-    return buildArray(remainder, [], testedDigit);
+    if(!n) return null;
+    let solution = buildArray(Math.pow(n, 2), [], n - 1);
+    if(solution.some(c => c <= 0)) return null;
+    else return solution;
 }
 
 function buildArray(remainder, testArray, testedDigit){
@@ -51,7 +50,7 @@ function nextLowestValidDigit(remainingPortion, currentTestedDigit){
     return Math.floor(Math.pow(remainingPortion, .5));
 }
 
-console.log(decompose(50));
+console.log(decompose(168769));
 
 exports.nextLowest = nextLowestValidDigit;
 exports.buildArray = buildArray;
