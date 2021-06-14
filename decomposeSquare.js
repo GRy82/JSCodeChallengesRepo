@@ -7,26 +7,24 @@ function decompose(n){
 
     return buildArray(remainder, [], testedDigit);
 }
-//dynamically add invalidRemainders at some point if we figure out how to.
-                    //  144          []          10
+
 function buildArray(remainder, testArray, testedDigit){
     if(remainder === 0) return testArray;
 
-    possibleRemainder = remainder - Math.pow(testedDigit, 2); // 44
+    possibleRemainder = remainder - Math.pow(testedDigit, 2); 
 
-    //if the remainder that would be yielded is the precursor to an invalid solution you run the function with the next possible digit.
     if (isDeadEnd(possibleRemainder, testedDigit))
-        return buildArray(remainder, testArray, nextLowestValidDigit(remainder, testedDigit));
+        return buildArray(remainder, testArray.slice(), nextLowestValidDigit(remainder, testedDigit));
 
-    testArray.unshift(testedDigit);
-    return  buildArray(possibleRemainder, testArray, nextLowestValidDigit(possibleRemainder, testedDigit));
+    testArray.unshift(testedDigit); 
+    return  buildArray(possibleRemainder, testArray.slice(), nextLowestValidDigit(possibleRemainder, testedDigit));
 
 }
-                    //44       //10
+                  
 function isDeadEnd(remainder, testedDigit){
+    if(remainder === 0) return false;
     if(invalidRemainders.has(remainder))
         return true;
-      
     
     let nextDigit = nextLowestValidDigit(remainder, testedDigit);
     for(let i = nextDigit; i > 0; i--){
@@ -45,34 +43,6 @@ function isDeadEnd(remainder, testedDigit){
     return true;
 }
 
-console.log(isDeadEnd(9, 4));
-
-
-
-function validSequence(arr){   
-    if(hasInvalidDigit(arr) || containsRepeats(arr))
-        return false;
-
-    return true;
-}
-
-function hasInvalidDigit(arr){
-    if(arr.some(c => c <= 0))
-        return true;
-
-    return false;
-}
-
-
-function containsRepeats(arr){
-    let newArray = [];
-    for(var value in arr){
-        if(newArray.includes(arr[value])) return true;
-        newArray.push(arr[value]);
-    }
-    return false;
-}
-        
 
 function nextLowestValidDigit(remainingPortion, currentTestedDigit){
     if(remainingPortion - Math.pow(currentTestedDigit - 1, 2) >= 0)
@@ -81,10 +51,8 @@ function nextLowestValidDigit(remainingPortion, currentTestedDigit){
     return Math.floor(Math.pow(remainingPortion, .5));
 }
 
+console.log(decompose(50));
 
-
-
-exports.validSequence = validSequence;
 exports.nextLowest = nextLowestValidDigit;
 exports.buildArray = buildArray;
 exports.isDeadEnd = isDeadEnd;

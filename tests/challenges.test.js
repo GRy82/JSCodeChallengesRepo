@@ -1,5 +1,5 @@
 const arrayDiff = require('../arrayDifference');
-const { validSequence, nextLowest, buildArray, isDeadEnd } = require('../decomposeSquare');
+const { nextLowest, isDeadEnd } = require('../decomposeSquare');
 
 
 describe('arrayDiff', () => {
@@ -29,27 +29,6 @@ describe('arrayDiff', () => {
 
 
 describe('decomposeSquare', () => {
-    describe('valid sequences', () => {
-        let collection;
-        it('should return false given a negative number in the collection.', () => {
-            collection = [1, 2, -4, 3, 7];
-            let validity = validSequence(collection);
-
-            expect(validity).toBeFalsy();
-        });
-        it('should return false given a 0 in the collection.', () => {
-            collection = [1, 2, 0, 3, 7];
-            let validity = validSequence(collection);
-
-            expect(validity).toBeFalsy();
-        });
-        it('should return false if it contains repeats.', () => {
-            collection = [1, 2, 2, 3, 7];
-            let validity = validSequence(collection);
-
-            expect(validity).toBeFalsy();
-        });
-    });
     describe('valid digits', () => {
         it('should return one less than the current digit.', () => {
             let remainder = 100;
@@ -64,6 +43,13 @@ describe('decomposeSquare', () => {
             let largestValidDigit = nextLowest(remainder, currentDigit);
             
             expect(largestValidDigit).toBe(9);
+        });
+        it('should return largest digit whose square is less than remainder, part 2', () => {
+            let remainder = 0;
+            let currentDigit = 3;
+            let largestValidDigit = nextLowest(remainder, currentDigit);
+            
+            expect(largestValidDigit).toBe(0);
         });
     });
 
@@ -89,6 +75,13 @@ describe('decomposeSquare', () => {
             let deadEnd = isDeadEnd(remainder, testedDigit);
 
             expect(deadEnd).toBeTruthy();
+        });
+        it('should return true if remainder and testedDigit lead to a dead end.', () => {
+            let testedDigit = 3;
+            let remainder = 0;
+            let deadEnd = isDeadEnd(remainder, testedDigit);
+
+            expect(deadEnd).toBeFalsy();
         });
     });
 });
