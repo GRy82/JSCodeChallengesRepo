@@ -1,5 +1,6 @@
 const arrayDiff = require('../arrayDifference');
-const {validSequence} = require('../decomposeSquare');
+const { validSequence, nextLowest } = require('../decomposeSquare');
+
 
 describe('arrayDiff', () => {
     let arrayOne, arrayTwo;
@@ -27,8 +28,8 @@ describe('arrayDiff', () => {
 });
 
 describe('decomposeSquare', () => {
-    let collection;
     describe('valid sequences', () => {
+        let collection;
         it('should return false given a negative number in the collection.', () => {
             collection = [1, 2, -4, 3, 7];
             let validity = validSequence(collection);
@@ -47,6 +48,19 @@ describe('decomposeSquare', () => {
 
             expect(validity).toBeFalsy();
         });
-
+    });
+    describe('valid digits', () => {
+        it('should return largest digit whose square is less than remainder, part 1', () => {
+            let remainder = 23;
+            let largestValidDigit = nextLowest(remainder);
+            
+            expect(largestValidDigit).toBe(4);
+        });
+        it('should return largest digit whose square is less than remainder, part 2', () => {
+            let remainder = 87;
+            let largestValidDigit = nextLowest(remainder);
+            
+            expect(largestValidDigit).toBe(9);
+        });
     });
 });

@@ -14,18 +14,6 @@ function decompose(n){
 }
 
 
-// take in a remainder and single digit. PLay a sequence out to the end 
-// and see whether it results in an appropriate sequence.
-// Appropriate sequence gets remainder to 0, contains no digits
-// <= 0, and contains no repeats.
-function digitCreatesValidSequence(remainder, digit){
-    possibleSequence = generateSolution(remainder, [], digit);
-    if(containsRepeats(possibleSequence) || possibleSequence[0] <= 0)
-        return false;
-
-    return true;
-}
-
 function generateSolution(remainder, testArray, digit){
     if(remainder === 0) return testArray;
 
@@ -69,6 +57,7 @@ function nextLowestValidDigit(remainingPortion){
 
 
 exports.validSequence = validSequence;
+exports.nextLowest = nextLowestValidDigit;
 
 
 
