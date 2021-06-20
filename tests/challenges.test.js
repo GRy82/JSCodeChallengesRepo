@@ -53,35 +53,36 @@ describe('decomposeSquare', () => {
         });
     });
 
-    describe('isDeadEnd', () => {
-        var invalidRemainders = new Set([2, 3, 6, 7, 8, 11, 12, 15, 18, 19, 22, 23]);
-        it('should return false if test digit is part of a solution set with a corresponding remainder.', () => {
-            let testedDigit = 4;
-            let remainder = 9
-            let deadEnd = isDeadEnd(remainder, testedDigit);
+    // describe('isDeadEnd', () => {
+    //     var invalidRemainders = new Set([2, 3, 6, 7, 8, 11, 12, 15, 18, 19, 22, 23]);
+    //     it('should return false if test digit is part of a solution set with a corresponding remainder.', () => {
+    //         let testedDigit = 4;
+    //         let remainder = 9
+    //         let deadEnd = isDeadEnd(remainder, testedDigit);
 
-            expect(deadEnd).toBeFalsy();
-        });
-        it('should return true if remainder is present in invalidRemainders.', () => {
-            let testedDigit = 7;
-            let remainder = 23;
-            let deadEnd = isDeadEnd(remainder, testedDigit);
+    //         expect(deadEnd).toBeFalsy();
+    //     });
+    //     it('should return true if remainder is present in invalidRemainders.', () => {
+    //         let testedDigit = 7;
+    //         let remainder = 23;
+    //         let deadEnd = isDeadEnd(remainder, testedDigit);
 
-            expect(deadEnd).toBeTruthy();
-        });
-        it('should return true if remainder and testedDigit lead to a dead end.', () => {
-            let testedDigit = 10;
-            let remainder = 44;
-            let deadEnd = isDeadEnd(remainder, testedDigit);
+    //         expect(deadEnd).toBeTruthy();
+    //     });
+    //     it('should return true if remainder and testedDigit lead to a dead end.', () => {
+    //         let testedDigit = 10;
+    //         let remainder = 44;
+    //         let deadEnd = isDeadEnd(remainder, testedDigit);
 
-            expect(deadEnd).toBeTruthy();
-        });
-        it('should return true if remainder and testedDigit lead to a dead end.', () => {
-            let testedDigit = 3;
-            let remainder = 0;
-            let deadEnd = isDeadEnd(remainder, testedDigit);
+    //         expect(deadEnd).toBeTruthy();
+    //     });
+    //     it('should return true if remainder and testedDigit lead to a dead end.', () => {
+    //         let testedDigit = 3;
+    //         let remainder = 0;
+    //         let deadEnd = isDeadEnd(remainder, testedDigit);
 
-            expect(deadEnd).toBeFalsy();
-        });
-    });
+    //         expect(deadEnd).toBeFalsy();
+    //     });
+    // });
 });
+

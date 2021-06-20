@@ -62,7 +62,7 @@ function nextLowestValidDigit(remainingPortion, currentTestedDigit){
     return Math.floor(Math.pow(remainingPortion, .5));
 }
 
-console.log(decompose(119775));
+console.log(decompose(342));
 
 exports.nextLowest = nextLowestValidDigit;
 exports.buildArray = buildArray;
