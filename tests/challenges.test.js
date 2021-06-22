@@ -1,5 +1,6 @@
 const arrayDiff = require('../arrayDifference');
 const { nextLowest, isDeadEnd } = require('../decomposeSquare');
+const dataReverse = require('../dataReverse');
 
 
 describe('arrayDiff', () => {
@@ -84,5 +85,49 @@ describe('decomposeSquare', () => {
     //         expect(deadEnd).toBeFalsy();
     //     });
     // });
+});
+
+describe('dataReverse', () => {
+    it('should return the argument as is if length of data is 8', () => {
+        let argument = [0, 1, 1, 0, 1, 1, 0, 0];
+
+        expect(dataReverse(argument)).toBe(argument);
+    });
+    it('should group data by every 8 digits and return those groups in reverse', () => {
+        let expected = [1,0,1,0,1,0,1,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1];
+        let data = [1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,0];
+
+        expect(dataReverse(data)).toEqual(expected);
+    });
+    it('should do same as above for smaller data set', () => {
+        let expected = [0,0,1,0,1,0,0,1,0,0,1,1,0,1,1,0];
+        let data = [0,0,1,1,0,1,1,0,0,0,1,0,1,0,0,1];
+
+        expect(dataReverse(data)).toEqual(expected);
+    });
+    it('should throw exception given 10 digits', () => {
+        let data = [0,0,1,1,0,1,1,0,0,0,1,0,1,0,0,1,0,1];
+        expect(() => dataReverse(data)).toThrow();
+    });
+    it('should throw exception given less than 8 digits', () => {
+        let data = [0,0,1,1,0,1];
+        expect(() => dataReverse(data)).toThrow();
+    });
+    it('should throw exception given null', () => {
+        let data = null;
+        expect(() => dataReverse(data)).toThrow();
+    });
+    it('should throw exception given undefined', () => {
+        let data = null;
+        expect(() => dataReverse(data)).toThrow();
+    });
+    it('should throw exception non-array object', () => {
+        let data = { id: 4 };
+        expect(() => dataReverse(data)).toThrow();
+    });
+    it('should throw exception given a string of length 8', () => {
+        let data = 'hello hi';
+        expect(() => dataReverse(data)).toThrow();
+    });
 });
 
