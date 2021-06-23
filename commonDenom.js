@@ -5,7 +5,7 @@
 // convertFracs [(1, 2), (1, 3), (1, 4)] `shouldBe` [(6, 12), (4, 12), (3, 12)]
 
 
-module.exports = (lst) => {
+convertFrac = (lst) => {
     let denoms = lst.map(pair => pair[1]);
     let primeFactors = denoms.map((denom) => {return getPrimeFactors(denom);});
     let lcm = primesMultiplied(primeFactors);
@@ -17,7 +17,7 @@ module.exports = (lst) => {
 }
 
 function getPrimeFactors(number){
-    let primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47];
+    let primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97];
     let primeFactors = [];
     let primeIndex = 0;
     while(!isPrime(number)){
@@ -35,13 +35,20 @@ function getPrimeFactors(number){
 }
 
 function isPrime(number){
-    let primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47];
+    let primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97];
     let primeEndings = [1, 3, 7, 9];
     let numberString = number.toString();
-    if(!primeEndings.includes(numberString[numberString.length - 1])) return false;
     if(primes.includes(number)) return true;
-    //all primes that aren't 2 or 3 can be represented as 6n - 1 or 6n + 1.
-    if(((number + 1) % 6) === 0 || ((number - 1) % 6) === 0) return true;
+    //if it ends in something other than 1, 3, 7, 9 and is not 2 or 5 then it's not prime.
+    if(!primeEndings.includes(parseInt(numberString[numberString.length - 1]))) return false;
+    //if the sum of digits is divisible by 3 then it is not a prime number
+    if(number.toString().split('').reduce((total, current) => total + parseInt(current), 0) % 3 === 0) return false;
+    
+    let sqrt = Math.pow(number, .5);
+    for(let i = 0; primes[i] < sqrt; i++)
+        if(number % primes[i] === 0) return false;
+    
+    return true;
 }
 
 function primesMultiplied(primeFactors){
@@ -74,3 +81,7 @@ function primesMultiplied(primeFactors){
         return total * Math.pow(parseInt(current), maxPrimeFrequencies[current])
     }, 1);
 }
+
+let lst = [[1, 2], [1, 3], [1, 4]];
+
+console.log(convertFrac(lst));
