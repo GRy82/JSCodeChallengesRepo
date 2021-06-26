@@ -17,7 +17,6 @@ function stat(strg) {
         sorted[Math.floor(arrayLen / 2)];
     let range = sorted[arrayLen - 1] - sorted[0];
     return 'Range: ' + formatString(range) + ' Average: ' + formatString(mean)+ ' Median: ' + formatString(median);
-
 }
 
 function formatString(seconds){
