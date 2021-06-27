@@ -26,3 +26,5 @@ function sumPairs(ints, s) {
     }
     return undefined;
 }
+
+module.exports = sumPairs;

@@ -1,6 +1,7 @@
 const arrayDiff = require('../arrayDifference');
 const { nextLowest, isDeadEnd } = require('../decomposeSquare');
 const dataReverse = require('../dataReverse');
+const sumPairs = require('../sumOfPairs');
 
 
 describe('arrayDiff', () => {
@@ -131,3 +132,44 @@ describe('dataReverse', () => {
     });
 });
 
+describe('sumPairs', () => {
+    it('should return [1, 7] for sum = 8 and collection [1, 4, 8, 7, 3, 15]', () => {
+        let expected = [1,7];
+        let actual = sumPairs([1, 4, 8, 7, 3, 15], 8);
+        expect(expected).toEqual(actual);
+    });
+    it('should return [0, -6] for sum = -6 and collection [1, -2, 3, 0, -6, 1]', () => {
+        let expected = [0,-6];
+        let actual = sumPairs([1, -2, 3, 0, -6, 1], -6);
+        expect(expected).toEqual(actual);
+    });
+    it('should return undefined for sum = -7 and collection [20, -13, 40]', () => {
+        let actual = sumPairs([20, -13, 40], -7);
+        expect(actual).toBeUndefined();
+    });
+    it('should return [1,1] for sum = 2 and collection [1, 2, 3, 4, 1, 0]', () => {
+        let expected = [1,1];
+        let actual = sumPairs([1, 2, 3, 4, 1, 0], 2);
+        expect(expected).toEqual(actual);
+    });
+    it('should return [3,7] for sum = 10 and collection [10, 5, 2, 3, 7, 5]', () => {
+        let expected = [3,7];
+        let actual = sumPairs([10, 5, 2, 3, 7, 5], 10);
+        expect(expected).toEqual(actual);
+    });
+    it('should return [4,4] for sum = 8 and collection [4, -2, 3, 3, 4]', () => {
+        let expected = [4,4];
+        let actual = sumPairs([4, -2, 3, 3, 4], 8);
+        expect(expected).toEqual(actual);
+    });
+    it('should return [0,0] for sum = 0 and collection [0, 2, 0]', () => {
+        let expected = [0,0];
+        let actual = sumPairs([0, 2, 0], 0);
+        expect(expected).toEqual(actual);
+    });
+    it('should return [13,-3] for sum = 10 and collection [5, 9, 13, -3]', () => {
+        let expected = [13,-3];
+        let actual = sumPairs([5, 9, 13, -3], 10);
+        expect(expected).toEqual(actual); 
+    });
+  });

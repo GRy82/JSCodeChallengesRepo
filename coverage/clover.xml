@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1624379558253" clover="3.2.0">
-  <project timestamp="1624379558254" name="All files">
-    <metrics statements="46" coveredstatements="43" conditionals="28" coveredconditionals="25" methods="8" coveredmethods="8" elements="82" coveredelements="76" complexity="0" loc="46" ncloc="46" packages="1" files="3" classes="3"/>
+<coverage generated="1624808491055" clover="3.2.0">
+  <project timestamp="1624808491055" name="All files">
+    <metrics statements="60" coveredstatements="57" conditionals="34" coveredconditionals="31" methods="9" coveredmethods="9" elements="103" coveredelements="97" complexity="0" loc="60" ncloc="60" packages="1" files="4" classes="4"/>
     <file name="arrayDifference.js" path="/Users/gregorywilliamryan/Documents/MacSideCode/NodeApps/JSCodeChallenge/arrayDifference.js">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <line num="1" count="1" type="stmt"/>
@@ -56,6 +56,23 @@
       <line num="67" count="1" type="stmt"/>
       <line num="68" count="1" type="stmt"/>
       <line num="69" count="1" type="stmt"/>
+    </file>
+    <file name="sumOfPairs.js" path="/Users/gregorywilliamryan/Documents/MacSideCode/NodeApps/JSCodeChallenge/sumOfPairs.js">
+      <metrics statements="14" coveredstatements="14" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
+      <line num="11" count="8" type="stmt"/>
+      <line num="12" count="8" type="stmt"/>
+      <line num="13" count="34" type="stmt"/>
+      <line num="14" count="34" type="cond" truecount="2" falsecount="0"/>
+      <line num="15" count="4" type="stmt"/>
+      <line num="17" count="30" type="stmt"/>
+      <line num="19" count="34" type="stmt"/>
+      <line num="20" count="34" type="stmt"/>
+      <line num="21" count="34" type="cond" truecount="2" falsecount="0"/>
+      <line num="22" count="13" type="stmt"/>
+      <line num="23" count="13" type="cond" truecount="2" falsecount="0"/>
+      <line num="24" count="7" type="stmt"/>
+      <line num="27" count="1" type="stmt"/>
+      <line num="30" count="1" type="stmt"/>
     </file>
   </project>
 </coverage>
