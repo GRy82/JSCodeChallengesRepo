@@ -1,3 +1,5 @@
+
+
 function miniMaxSum(arr) {
     let min = Math.min(...arr);
     let max = Math.max(...arr);
