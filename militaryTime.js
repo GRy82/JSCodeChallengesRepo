@@ -15,4 +15,11 @@ function timeConversion(s) {
     return time;
 }
 
-console.log(timeConversion('02:34:00PM'));
+//console.log(timeConversion('02:34:00PM'));
+
+function countApplesAndOranges(s, t, a, b, apples, oranges) {
+    console.log(apples.filter(e => a + e >= s && a + e <= t).length);
+    console.log(oranges.filter(e => b + e >= s && b + e <= t).length);
+}
+
+countApplesAndOranges(7, 10, 4, 12, [2, 3, -4], [3, -2, -4]);
