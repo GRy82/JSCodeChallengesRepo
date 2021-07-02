@@ -14,5 +14,3 @@ function divisibleSumPairs(n, k, ar) {
                 pairCount++;
     return pairCount;
 }
-
-console.log(divisibleSumPairs(2, 2, [8, 10]));
