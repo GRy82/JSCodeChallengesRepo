@@ -15,5 +15,3 @@ function birthday(chocBar, day, month) {
     }
     return validOutcomeQty;
 }
-
-console.log(birthday([4], 4, 1));
