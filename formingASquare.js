@@ -8,21 +8,43 @@
 // Print this cost on a new line.
 
 function formingMagicSquare(s) {
+    let cost = 0;
+    let unusedNums = getUnusedNums(s);
+    let rowColumnSums = getRowColumnSums(s);
+    let repeatedNums = getRepeatedNums(s);
+    while(!isMagicSquare(rowColumnSums, unusedNums)){
 
+    }
+    return cost;
 }
 //-------------------------------------------------
 // returns the unused numbers as a collection.
-function unusedNumbers(s){
+function getUnusedNums(s){
     return [1,2,3,4,5,6,7,8,9].filter(n => {
         return !s[0].includes(n) 
         && !s[1].includes(n) 
         && !s[2].includes(n)
     });
 }
+
 //-------------------------------------------------
-function isMagicSquare(s){
-    let allSums15 = getRowColumnSums(s).every(c => c === 15);
-    let allNumbersUsed = unusedNumbers(s).length === 0;
+// returns the duplicate numbers as a collection.
+function getRepeatedNums(s){
+    let numsSeen = {};
+    for(let i = 0; i < s.length; i++){
+        let row = s[i]
+        for(let j = 0; j < row.length; j++){
+            if(!numsSeen[row[j]]) numsSeen[row[j]] = 1;
+            else numsSeen[row[j]]++;
+        }
+    }
+    let repeats = Object.entries(numsSeen).filter(e => e[1] > 1);
+    return repeats.map(c => parseInt(c[0]));
+}
+//-------------------------------------------------
+function isMagicSquare(rowColumnSums, unusedNumbers){
+    let allSums15 = rowColumnSums.every(c => c === 15);
+    let allNumbersUsed = unusedNumbers.length === 0;
     return (allNumbersUsed && allSums15);
 }
 //-------------------------------------------------
@@ -53,5 +75,5 @@ function getModalSum(sums){
 }
 //-------------------------------------------------
 
-let isMagic = isMagicSquare([[8, 3, 4], [1, 5, 9], [6, 7, 2]]);
+let isMagic = getRepeatedNums([[5, 3, 4], [1, 5, 8], [6, 4, 2]]);
 console.log(isMagic);
