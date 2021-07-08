@@ -18,6 +18,16 @@ function formingMagicSquare(s) {
     return cost;
 }
 //-------------------------------------------------
+function getDuplicatePosition(s, duplicateNumber, repetitions){
+    let numberPositions = {};
+    for(let i = 0; i < s.length; i++){
+        let row = s[i]
+        for(let j = 0; j < row.length; j++){
+            if(row[j] === duplicateNumber){
+                numberPositions[i.toString() + ',' + j.toString()] = 
+    }
+}
+//-------------------------------------------------
 // returns the unused numbers as a collection.
 function getUnusedNums(s){
     return [1,2,3,4,5,6,7,8,9].filter(n => {
