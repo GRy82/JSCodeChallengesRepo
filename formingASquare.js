@@ -8,9 +8,6 @@
 // Print this cost on a new line.
 
 function formingMagicSquare(s) {
-    let cost = Number.MAX_VALUE;
-    let sums = getRowColumnSums(s);
-    let modalSums = getModalSum(sums);
 
 }
 //-------------------------------------------------
@@ -21,6 +18,12 @@ function unusedNumbers(s){
         && !s[1].includes(n) 
         && !s[2].includes(n)
     });
+}
+//-------------------------------------------------
+function isMagicSquare(s){
+    let allSums15 = getRowColumnSums(s).every(c => c === 15);
+    let allNumbersUsed = unusedNumbers(s).length === 0;
+    return (allNumbersUsed && allSums15);
 }
 //-------------------------------------------------
 function getRowColumnSums(s){
@@ -50,5 +53,5 @@ function getModalSum(sums){
 }
 //-------------------------------------------------
 
-let unused = unusedNumbers([[5, 3, 4], [1, 5, 8], [6, 4, 2]]);
-console.log(unused);
+let isMagic = isMagicSquare([[8, 3, 4], [1, 5, 9], [6, 7, 2]]);
+console.log(isMagic);
